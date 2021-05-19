@@ -1,18 +1,23 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { changeFilter } from '../../redux/phonebook/phonebook-actions';
 import { getFilter } from '../../redux/phonebook/phonebook-selectors';
 import PropTypes from 'prop-types';
 
 import style from './Filter.module.css';
 
-const Filter = ({ filter, changeFilter }) => {
+const Filter = () => {
+  const filter = useSelector(getFilter);
+  const dispatch = useDispatch();
+
+  const onChangeFilter = e => dispatch(changeFilter(e.currentTarget.value));
+
   return (
     <>
       <p className={style.contactText}>Find contacts by name</p>
       <input
         className={style.findInput}
-        onChange={changeFilter}
+        onChange={onChangeFilter}
         type="text"
         value={filter}
       />
@@ -30,12 +35,46 @@ Filter.propTypes = {
   changeFilter: PropTypes.func,
 };
 
-const mapStateToProps = state => ({
-  filter: getFilter(state),
-});
+export default Filter;
 
-const mapDispatchToProps = dispatch => ({
-  changeFilter: e => dispatch(changeFilter(e.currentTarget.value)),
-});
+// import React from 'react';
+// import { connect } from 'react-redux';
+// import { changeFilter } from '../../redux/phonebook/phonebook-actions';
+// import { getFilter } from '../../redux/phonebook/phonebook-selectors';
+// import PropTypes from 'prop-types';
 
-export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+// import style from './Filter.module.css';
+
+// const Filter = ({ filter, changeFilter }) => {
+//   return (
+//     <>
+//       <p className={style.contactText}>Find contacts by name</p>
+//       <input
+//         className={style.findInput}
+//         onChange={changeFilter}
+//         type="text"
+//         value={filter}
+//       />
+//     </>
+//   );
+// };
+
+// Filter.defaultProps = {
+//   filter: '',
+//   changeFilter: () => {},
+// };
+
+// Filter.propTypes = {
+//   filter: PropTypes.string,
+//   changeFilter: PropTypes.func,
+// };
+
+// const mapStateToProps = state => ({
+//   filter: getFilter(state),
+// });
+
+// const mapDispatchToProps = dispatch => ({
+//   changeFilter: e => dispatch(changeFilter(e.currentTarget.value)),
+// });
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Filter);

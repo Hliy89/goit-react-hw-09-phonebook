@@ -13,11 +13,11 @@ const token = {
 };
 
 
-const register = credentials => async dispatch => {
+const register = loginData => async dispatch => {
   dispatch(authActions.registerRequest());
 
   try {
-    const { data } = await axios.post('/users/signup', credentials);
+    const { data } = await axios.post('/users/signup', loginData);
 
     token.set(data.token);
     dispatch(authActions.registerSuccess(data));
@@ -27,11 +27,11 @@ const register = credentials => async dispatch => {
 };
 
 
-const logIn = credentials => async dispatch => {
+const logIn = loginData => async dispatch => {
   dispatch(authActions.loginRequest());
 
   try {
-    const { data } = await axios.post('/users/login', credentials);
+    const { data } = await axios.post('/users/login', loginData);
 
     token.set(data.token);
     dispatch(authActions.loginSuccess(data));
