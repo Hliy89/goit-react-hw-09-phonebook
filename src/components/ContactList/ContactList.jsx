@@ -5,7 +5,6 @@ import {
   getFilter,
   getContacts,
 } from '../../redux/phonebook/phonebook-selectors';
-import PropTypes from 'prop-types';
 
 import style from './ContactList.module.css';
 
@@ -36,16 +35,6 @@ const ContactList = () => {
       <ul className={style.contactList}>{contactElement}</ul>
     </div>
   );
-};
-
-ContactList.defaultProps = {
-  contacts: [],
-  onDelete: () => {},
-};
-
-ContactList.propTypes = {
-  contacts: PropTypes.array,
-  onDelete: PropTypes.func,
 };
 
 export default ContactList;

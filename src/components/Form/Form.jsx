@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addContactOperations } from '../../redux/phonebook/phonebook-operations';
-import PropTypes from 'prop-types';
 
 import { initialState } from './initialState';
 
@@ -72,14 +71,6 @@ const Form = () => {
       </button>
     </form>
   );
-};
-
-Form.defaultProps = {
-  onSubmit: () => {},
-};
-
-Form.propTypes = {
-  onSubmit: PropTypes.func,
 };
 
 export default Form;

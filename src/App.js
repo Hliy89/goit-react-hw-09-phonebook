@@ -43,8 +43,6 @@ export default function App() {
 };
   
 
-
-
 // import React, { Component, Suspense, lazy } from 'react';
 // import { connect } from 'react-redux';
 // import { BrowserRouter as Router, Switch } from 'react-router-dom';
